@@ -1,0 +1,5 @@
+// Topics To be covered under searching Algorithm
+// Linear Search on Array 
+// Binary Search on sorted Array
+// Naive String Search Algorithm
+// KMP String Search Algorithm
