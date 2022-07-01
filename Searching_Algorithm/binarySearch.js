@@ -34,4 +34,10 @@ function pseudo_BinarySearch(sortedArray, valueToBeSearched) {
     }
     return sortedArray[middlePointer] === valueToBeSearched ? middlePointer : -1
 }
-console.log(pseudo_BinarySearch([1, 2, 3, 4], 4));
+pseudo_BinarySearch([1, 2, 3, 4], 4);
+
+// Big O.
+// BestCase - O(1) (when the middle element is what you are looking for)
+// WorstCase - O(log n).
+// Log n which is also log base 2 n.
+// it is 2 to power n . n is the number of steps function took with respect to the input gets increase.
