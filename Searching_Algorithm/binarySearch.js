@@ -32,8 +32,6 @@ function pseudo_BinarySearch(sortedArray, valueToBeSearched) {
         }
         middlePointer = Math.floor((leftPointer + rightPointer) / 2);
     }
-    if (sortedArray[middlePointer] === valueToBeSearched)
-        return middlePointer;
-    return -1
+    return sortedArray[middlePointer] === valueToBeSearched ? middlePointer : -1
 }
 console.log(pseudo_BinarySearch([1, 2, 3, 4], 4));
