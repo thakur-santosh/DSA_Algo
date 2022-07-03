@@ -4,7 +4,6 @@
 // then loop over the shorter string .
 // increase the count when the string matches.
 
-
 function naive_StringSearch(longerString, stringToBeMatched) {
     let counter = 0;
     for (let i = 0; i < longerString.length; i++) {
@@ -12,7 +11,6 @@ function naive_StringSearch(longerString, stringToBeMatched) {
             if (longerString[i + j] !== stringToBeMatched[j]) break;
             if (j === stringToBeMatched.length - 1) counter++;
         }
-
     }
     return counter;
 }
