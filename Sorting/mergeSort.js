@@ -97,11 +97,11 @@ function mergeTwoSortedArray(firstArray, secondArray) {
 function mergeSort(arr) {
     // base case for recursion
     if (arr.length <= 1) return arr;
-    let mid = Math.floor(arr.length / 2);
+    const mid = Math.floor(arr.length / 2);
     // need to call the mergeSort again to the left and right half 
     const firstHalf = mergeSort(arr.slice(0, mid));
     const secondHalf = mergeSort(arr.slice(mid));
     return mergeTwoSortedArray(firstHalf, secondHalf);
 }
 
-console.log(mergeSort([1, 2, 63, 43, 7, 8, 9]))
+mergeSort([1, 2, 63, 43, 7, 8, 9]);
