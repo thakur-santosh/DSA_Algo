@@ -1,0 +1,3 @@
+DataStructure is a collection of value, 
+relationship among them,
+and the or function operation we can perform on the data
