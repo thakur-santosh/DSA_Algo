@@ -41,6 +41,15 @@ class SinglyLinkedList {
         this.length++;
         return this;
     }
+
+    // normal traverse method to traverse through the linked list.
+    traverse() {
+        var current = this.head;
+        while (current) {
+            console.log(current.val);
+            current = current.next;
+        }
+    }
 }
 
 var first = new SinglyLinkedList();
@@ -48,4 +57,5 @@ first.push("Hi");
 first.push("Hello");
 first.push("You");
 
-console.log(first);
+first.traverse();
+
