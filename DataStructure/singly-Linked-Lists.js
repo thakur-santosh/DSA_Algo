@@ -41,7 +41,6 @@ class SinglyLinkedList {
         this.length++;
         return this;
     }
-
     // normal traverse method to traverse through the linked list.
     traverse() {
         var current = this.head;
@@ -50,7 +49,6 @@ class SinglyLinkedList {
             current = current.next;
         }
     }
-
     // pop method.
     // if no node is found return undefined.
     // if nodes are present:
@@ -58,7 +56,6 @@ class SinglyLinkedList {
     // remove the last node.
     // and set the 2nd last node as the new node.
     // decrease the length
-
     pop() {
         if (!this.head) return undefined;
         let currentHead = this.head;
@@ -78,15 +75,29 @@ class SinglyLinkedList {
 
         return currentHead;
     }
+    // shift : Removing the first element from the list.
+    // to remove the first list from the node , make the next node as the head.
+    // once shifting done return the shifted node. ie- the removed node.
+    shift() {
+        // return undefined if no node.
+        if (!this.head) return undefined;
+        let currentHead = this.head;
+        let nextHead = this.head.next;
 
+        this.head = nextHead;
+        this.length--;
+        if (!this.length) {
+            this.tail = null;
+        }
+        return currentHead;
+    }
 }
 
 var first = new SinglyLinkedList();
 first.push("Hi");
-first.push("Hello");
-first.push("You");
 
-first.pop()
+
+first.shift()
 console.log(first);
 
 
