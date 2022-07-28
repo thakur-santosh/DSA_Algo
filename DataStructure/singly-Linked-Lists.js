@@ -50,6 +50,35 @@ class SinglyLinkedList {
             current = current.next;
         }
     }
+
+    // pop method.
+    // if no node is found return undefined.
+    // if nodes are present:
+    // loop thought the node , find the last one and also keep track of 2nd last node.
+    // remove the last node.
+    // and set the 2nd last node as the new node.
+    // decrease the length
+
+    pop() {
+        if (!this.head) return undefined;
+        let currentHead = this.head;
+        let newTail = this.head;
+        while (currentHead.next) {
+            newTail = currentHead;
+            currentHead = currentHead.next;
+        }
+        this.tail = newTail;
+        this.tail.next = null;
+        this.length--;
+
+        if (!this.length) {
+            this.head = null;
+            this.tail = null;
+        }
+
+        return currentHead;
+    }
+
 }
 
 var first = new SinglyLinkedList();
@@ -57,5 +86,8 @@ first.push("Hi");
 first.push("Hello");
 first.push("You");
 
-first.traverse();
+first.pop()
+console.log(first);
+
+
 
