@@ -91,14 +91,60 @@ class SinglyLinkedList {
         }
         return currentHead;
     }
+    // unshift : Add a new head in the beginning.
+    // to add the new node , add the node and point the tail to the old head
+    unshift(val) {
+        // check if there is no node.
+        // if no node then made the head and tail to the same node.
+        const newNode = new Node(val)
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            // ** approach one save the old node and then assign to head.next
+            // const oldNode = this.head;
+            // this.head = newNode;
+            // this.head.next = oldNode;
+
+            // ** approach 2 set newNode.next to the old head
+            newNode.next = this.head;
+            this.head = newNode;
+
+        }
+
+        this.length++;
+        return this;
+
+    }
+    // get : accepts a index and return the node present at the specific node.
+    // Array is more efficient when it comes to access the specific index element.
+    get(index) {
+        // return null if negative value 
+        // return null if index is same or greater then linkedList
+        if (index >= this.length || index < 0) return null;
+        else {
+            // loop through the linked list number of index times
+            // find the node and return the node
+            let count = 0;
+            let current = this.head;
+            // ** Alternate solution
+            // while (count !== index)
+            while (count < index) {
+                // increase the count if not equal to index
+                count++;
+                current = current.next;
+
+            }
+            return current;
+        }
+    }
 }
 
 var first = new SinglyLinkedList();
 first.push("Hi");
-
-
-first.shift()
-console.log(first);
+first.push("Hello");
+// console.log(first);
+console.log(first.get(3));
 
 
 
