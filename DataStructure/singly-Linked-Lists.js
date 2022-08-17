@@ -138,13 +138,63 @@ class SinglyLinkedList {
             return current;
         }
     }
+    // set : takes two argument value and index 
+    // updated the specified element index with the given value.
+    // use the get method to find the given node index.
+    set(val, index) {
+        // call the get method with the given index
+        const searchedNode = this.get(index);
+        if (searchedNode) {
+            searchedNode.val = val;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    // insert : insert the given value at the specified index.
+    // @param(index , val);
+    insert(index, val) {
+        // check the index value, 
+        // if index less then 0 or  greater than length return false
+        if (index < 0 || index > this.length) return false;
+        // if length equals to 0 , then update the head 
+        // use the unshift method.
+        if (index === 0) {
+            return !!this.unshift(val);
+        }
+        // if index equal to length then use push method to update the tail.
+        if (index === this.length) {
+            return !!this.push(val);
+        }
+        // find the previous node with get method 
+        // and update the value and point the next node to the current.
+        const newNode = new Node(val);
+        const preNode = this.get(index - 1);
+        const temp = preNode.next;
+        newNode.next = temp;
+        // ** alternate
+        //newNode.next = this.get(index);
+        preNode.next = newNode;
+        this.length++;
+        return true
+    }
+    // remove : remove the node node from a specific index
+    // @param(index)
+    remove(index) {
+        if (index < 0 || index > this.length) return false;
+        if (index === 0) return !!this.shift();
+        if (index - 1 === this.length) return !!this.pop()
+    }
+
 }
 
 var first = new SinglyLinkedList();
 first.push("Hi");
 first.push("Hello");
+first.push("There");
 // console.log(first);
-console.log(first.get(3));
+first.insert(1, "1")
+console.log(first);
 
 
 
