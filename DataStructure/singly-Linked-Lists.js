@@ -183,9 +183,33 @@ class SinglyLinkedList {
     remove(index) {
         if (index < 0 || index > this.length) return false;
         if (index === 0) return !!this.shift();
-        if (index - 1 === this.length) return !!this.pop()
-    }
+        if (index === this.length - 1) return !!this.pop();
 
+        // use the get method to get the previous node and set the node.next to next node
+        var preNode = this.get(index - 1);
+        preNode.next = preNode.next.next;
+        this.length--;
+        return preNode.next;
+    }
+    // reverse the linked list
+    // reverse the method.
+    reverse() {
+        const node = this.head;
+        // change the head to tail
+        this.head = this.tail;
+        // change the tail to head
+        this.head = node;
+        const prev = null;
+        let next;
+        // loop over 
+        for (let index = 0; index < this.length; index++) {
+            next = node.next;
+            node.next = null;
+            prev = node;
+            node = next;
+        }
+        return this;
+    }
 }
 
 var first = new SinglyLinkedList();
@@ -194,6 +218,7 @@ first.push("Hello");
 first.push("There");
 // console.log(first);
 first.insert(1, "1")
+first.remove(3)
 console.log(first);
 
 
