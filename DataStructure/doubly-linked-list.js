@@ -40,4 +40,37 @@ class DoublyLikedList {
     this.length++;
     return this;
   }
+
+  // If there is no head or length = 0 , return undefined
+  // store the current tail in a  variable so that we can return the tail removed value
+  // If the length 1 set the head and the tail to be null
+  // set the newTail .next property to null
+  // decrement the length  by 1
+  // return the removed tail
+  pop() {
+    // you can check the head or check for the length
+    //if(!this.head) return undefined;
+    if (this.length == 0) return undefined;
+    const poppedTail = this.tail;
+    if (this.length == 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.tail = poppedTail.prev;
+      this.tail.next = null;
+      currentTail.prev = null;
+    }
+    this.length--;
+    return poppedTail;
+  }
 }
+
+const dll = new DoublyLikedList();
+
+dll.push(3);
+dll.push(5);
+console.log(dll);
+dll.pop();
+console.log(dll);
+dll.pop();
+console.log(dll);
