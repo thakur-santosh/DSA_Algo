@@ -82,6 +82,26 @@ class DoublyLikedList {
     this.length--;
     return oldHead;
   }
+  //unshift : Add the node at the beginning of the current node.
+  // take a value , create a new node.
+  // if length is 0 set the head and tail as new node.
+  // else take the new created node and set it as a head .
+  // set the next value as prev head.
+  // set the prev value of the old head to new head.
+  // set the prev value of the new node to null
+  unshift(val) {
+    const newHeadNode = new Node(val);
+    if (this.length == 0) {
+      this.head = newHeadNode;
+      this.tail = newHeadNode;
+    } else {
+      this.head.prev = newHeadNode;
+      newHeadNode.next = this.head;
+      this.head = newHeadNode;
+    }
+    this.length++;
+    return this;
+  }
 }
 
 const dll = new DoublyLikedList();
