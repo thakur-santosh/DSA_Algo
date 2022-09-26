@@ -58,10 +58,29 @@ class DoublyLikedList {
     } else {
       this.tail = poppedTail.prev;
       this.tail.next = null;
-      currentTail.prev = null;
+      poppedTail.prev = null;
     }
     this.length--;
     return poppedTail;
+  }
+  //shift : remove from the beginning of the DLL
+  // If length 0  , return undefined
+  // length 1 , set head and tail to null
+  // else , update the next head to the current head and update the current head prev to null
+  // return the removed head.
+  shift() {
+    if (this.length == 0) return undefined;
+    const oldHead = this.head;
+    if (this.length == 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = oldHead.next;
+      this.head.prev = null;
+      oldHead.next = null;
+    }
+    this.length--;
+    return oldHead;
   }
 }
 
@@ -69,8 +88,5 @@ const dll = new DoublyLikedList();
 
 dll.push(3);
 dll.push(5);
-console.log(dll);
-dll.pop();
-console.log(dll);
-dll.pop();
-console.log(dll);
+
+console.log(dll.pop());
