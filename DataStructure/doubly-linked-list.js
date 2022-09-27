@@ -102,11 +102,41 @@ class DoublyLikedList {
     this.length++;
     return this;
   }
+  // Check if the length is 0 or index is greater than or equal to the dll length return undefined
+  // In DLL we can traverse from head and tail both , because tail also stores the value of previous node
+  // If the index is less then length / 2 then loop through the head toward middle return the node once it is found
+  // If the index is greater than length /2 then loop through the tail  toward middle return the node once found
+  get(index) {
+    if (this.length < 0 || index >= this.length) return null;
+    const middleIndex = Math.floor(this.length / 2);
+    // check if the index is less , so that we can traverse from head else traverse from the tail
+    let count, currentNode;
+    if (index <= middleIndex) {
+      count = 0;
+      let currentNode = this.head;
+      while (count != index) {
+        currentNode = currentNode.next;
+        count++;
+      }
+    } else {
+      count = this.length - 1;
+      currentNode = this.tail;
+      while (count != index) {
+        currentNode = currentNode.prev;
+        count--;
+      }
+    }
+    return currentNode;
+  }
 }
 
 const dll = new DoublyLikedList();
 
 dll.push(3);
-dll.push(5);
-
-console.log(dll.pop());
+dll.push(6);
+dll.push(7);
+dll.push(8);
+dll.push(9);
+dll.push(2);
+dll.push(4);
+console.log(dll.get(6));
