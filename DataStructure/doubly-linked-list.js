@@ -128,6 +128,16 @@ class DoublyLikedList {
     }
     return currentNode;
   }
+  // set method , updates the value at the given index with the given value
+  set(index, val) {
+    const foundNode = this.get(index);
+    if (foundNode) {
+      foundNode.val = val;
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 const dll = new DoublyLikedList();
