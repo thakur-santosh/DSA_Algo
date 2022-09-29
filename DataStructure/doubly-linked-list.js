@@ -24,7 +24,7 @@ class DoublyLikedList {
     this.tail = null;
     this.length = 0;
   }
-
+  // ** adds the  node at the end of the DLL
   push(val) {
     const newNode = new Node(val);
     // if the DLL is empty then update the tail and head to the newNode
@@ -40,7 +40,7 @@ class DoublyLikedList {
     this.length++;
     return this;
   }
-
+  // ** pop remove the node from the end of DLL
   // If there is no head or length = 0 , return undefined
   // store the current tail in a  variable so that we can return the tail removed value
   // If the length 1 set the head and the tail to be null
@@ -63,7 +63,7 @@ class DoublyLikedList {
     this.length--;
     return poppedTail;
   }
-  //shift : remove from the beginning of the DLL
+  // ** shift : remove from the beginning of the DLL
   // If length 0  , return undefined
   // length 1 , set head and tail to null
   // else , update the next head to the current head and update the current head prev to null
@@ -82,7 +82,7 @@ class DoublyLikedList {
     this.length--;
     return oldHead;
   }
-  //unshift : Add the node at the beginning of the current node.
+  // ** unshift : Add the node at the beginning of the current node.
   // take a value , create a new node.
   // if length is 0 set the head and tail as new node.
   // else take the new created node and set it as a head .
@@ -102,6 +102,7 @@ class DoublyLikedList {
     this.length++;
     return this;
   }
+  // ** get the element at specified index
   // Check if the length is 0 or index is greater than or equal to the dll length return undefined
   // In DLL we can traverse from head and tail both , because tail also stores the value of previous node
   // If the index is less then length / 2 then loop through the head toward middle return the node once it is found
@@ -128,7 +129,7 @@ class DoublyLikedList {
     }
     return currentNode;
   }
-  // set method , updates the value at the given index with the given value
+  // ** set method , updates the value at the given index with the given value
   set(index, val) {
     const foundNode = this.get(index);
     if (foundNode) {
@@ -138,12 +139,12 @@ class DoublyLikedList {
       return false;
     }
   }
-  // insert : add a node at a specific index
+  // ** insert : add a node at a specific index
   // check from where to traverse the list , i.e from head or from tail return false
   // check if index is valid or not
   // if index 0  unshift , i.e push to the DLL
-  //if the length is last then push the node to dll
-  //  use get method to get the element
+  // if the length is last then push the node to dll
+  // use get method to get the element
   // increment after updating the node
   // return true
   insert(val, index) {
