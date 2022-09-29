@@ -113,7 +113,7 @@ class DoublyLikedList {
     let count, currentNode;
     if (index <= middleIndex) {
       count = 0;
-      let currentNode = this.head;
+      currentNode = this.head;
       while (count != index) {
         currentNode = currentNode.next;
         count++;
