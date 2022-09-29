@@ -138,6 +138,32 @@ class DoublyLikedList {
       return false;
     }
   }
+  // insert : add a node at a specific index
+  // check from where to traverse the list , i.e from head or from tail return false
+  // check if index is valid or not
+  // if index 0  unshift , i.e push to the DLL
+  //if the length is last then push the node to dll
+  //  use get method to get the element
+  // increment after updating the node
+  // return true
+  insert(val, index) {
+    if (index < 0 || index > this.length) return false;
+    if (index == 0) return !!this.unshift(val);
+    if (this.length == index) return !!this.push(val);
+
+    const prevNode = this.get(index - 1);
+    const currentNode = prevNode.next;
+    const newNode = new Node(val);
+
+    prevNode.next = newNode;
+    newNode.prev = prevNode;
+
+    newNode.next = currentNode;
+    currentNode.prev = newNode;
+
+    this.length++;
+    return true;
+  }
 }
 
 const dll = new DoublyLikedList();
@@ -149,4 +175,6 @@ dll.push(8);
 dll.push(9);
 dll.push(2);
 dll.push(4);
-console.log(dll.get(6));
+dll.insert(5, 0);
+console.log(dll.get(0));
+console.log(dll);
