@@ -165,6 +165,30 @@ class DoublyLikedList {
     this.length++;
     return true;
   }
+
+  // ** remove : remove from the specified index
+  // if the index is not valid (negative or more than the DLL) return false
+  // if the index is same as the length-1 then use pop.
+  // if index is 0 use shift
+  // use get method to get the node
+  // update the next and the prev
+  // decrease the length
+  // return the found node with prev and next node value updated as null
+  remove(index) {
+    if (index < 0 || index > this.length) return false;
+    if (index == 0) return !!this.shift();
+    if (index == this.length) return !!this.pop();
+
+    let currentNode = this.get(index);
+    let prevNode = currentNode.prev;
+    let nextNode = currentNode.next;
+    prevNode.next = nextNode;
+    nextNode.prev = prevNode;
+    currentNode.next = null;
+    currentNode.prev = null;
+    this.length--;
+    return currentNode;
+  }
 }
 
 const dll = new DoublyLikedList();
