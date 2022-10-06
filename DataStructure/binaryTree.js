@@ -10,8 +10,11 @@
 // lower value gets left side of the parent
 // higher value node gets in the right side
 
-// Node class BST
+// ** Big O for binary search tree
+// search - O(log n )
+// insertion O(log n ) (worst case is different in case of one sided binary tree)
 
+// Node class BST
 class Node {
   constructor(value) {
     this.value = value;
