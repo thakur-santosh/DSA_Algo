@@ -19,8 +19,90 @@
 //        |       /  \
 //       \/     6     15
 //        |     /\     \
-//       |    /  \     \
-//      \/    /    \     \
-//          3     8     20
+//       |    /   \     \
+//      \/  /      \     \
+//         3       8      20
 // There is 3 type of depth search.
 // 1) DFS - InOrder. 2)PreOrder. 3)PostOrder
+
+// Node class
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
+
+  insert(val) {
+    const newNode = new Node(val);
+    if (!this.root) {
+      this.root = newNode;
+      return true;
+    }
+    // check if the value is greater than the node or root
+    // if yes than put in right
+    // no , insert on the left side
+    // if there is already a node on the right or the left side then keep follow the rules for greater than right side less than left side
+    let currentNode = this.root;
+    while (currentNode) {
+      if (val > currentNode.value) {
+        if (currentNode.right) currentNode = currentNode.right;
+        else break;
+      } else {
+        if (currentNode.left) currentNode = currentNode.left;
+        else break;
+      }
+    }
+    if (val > currentNode.value) {
+      currentNode.right = newNode;
+    } else currentNode.left = newNode;
+    return this;
+  }
+
+  search(val) {
+    if (!this.root) return false;
+    if (this.root.value === val) return;
+    let current = this.root;
+    let found = false;
+    while (current && !found) {
+      if (current.val > val) {
+        current = current.left;
+      } else if (current.value < val) {
+        current = current.right;
+      } else {
+        found = true;
+      }
+    }
+    if (!found) return undefined;
+    return current;
+  }
+  BFS() {
+    let node = this.root,
+      data = [],
+      queue = [];
+    queue.push(node);
+
+    while (queue.length) {
+      node = queue.shift();
+      data.push(node.value);
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+
+    return data;
+  }
+}
+
+const bt = new BinarySearchTree();
+bt.insert(10);
+console.log(bt);
+bt.insert(20);
+console.log(bt);
+bt.insert(5);
+console.log(bt);
