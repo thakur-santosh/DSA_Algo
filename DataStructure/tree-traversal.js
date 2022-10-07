@@ -82,6 +82,10 @@ class BinarySearchTree {
     if (!found) return undefined;
     return current;
   }
+  // taking two array to achieve the BFS
+  // queue will store the nodes and there respective children's in order
+  // loop order the first index node and move to data once the respective children's are stores in queue in order
+  // follow the same process once the queue is empty and return the data
   BFS() {
     let node = this.root,
       data = [],
